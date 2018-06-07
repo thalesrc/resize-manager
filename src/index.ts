@@ -1,0 +1,1 @@
+export { GTResizeObserver as ResizeObserver } from "./resize-observer";
