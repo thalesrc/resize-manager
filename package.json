@@ -6,7 +6,7 @@
   "typings": "dist/index.d.ts",
   "scripts": {
     "prepare": "tsc",
-    "test": "jest"
+    "document": "typedoc --out docs --excludeNotExported --excludePrivate --disableOutputCheck --gitRevision master"
   },
   "repository": {
     "type": "git",
