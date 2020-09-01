@@ -11,7 +11,7 @@
     "prepare": "tsc",
     "document": "typedoc --out docs --excludeNotExported --excludePrivate --disableOutputCheck --gitRevision master",
     "prepare:github-pages": "npm run document && echo \"\" > ./docs/.nojekyll",
-    "prepare:legacy": "tsc -p ./config/tsconfig.lib.legacy.json",
+    "prepare:legacy": "tsc -p ./tsconfig.legacy.json",
     "version-update": "npm version $PACKAGE_VERSION --no-git-tag-version",
     "change-ts-version": "rjp ./package.json typescript ~3.4.5"
   },
