@@ -1,5 +1,5 @@
 import { Observable, fromEvent, Subject } from "rxjs";
-import { share, map, filter, throttleTime } from "rxjs/operators";
+import { share, map, filter, throttleTime, merge, distinctUntilChanged } from "rxjs/operators";
 import ResizeObserver from "resize-observer-polyfill";
 
 /**
@@ -41,9 +41,27 @@ const RESIZE_OBSERVER = new ResizeObserver(entries => {
 });
 
 /**
- * Cache of observed elements with observers
+ * Mutation Event provider of all registered elements
  */
-const OBSERVER_CACHE = new Map<IResizableTarget, {count: number; observable: Observable<IResizeEvent>}>();
+const MUTATION_EVENTS_SUBJECT = new Subject<MutationRecord>();
+
+/**
+ * Observable instance of MUTATION_EVENTS_SUBJECT
+ * @see MUTATION_EVENTS_SUBJECT
+ */
+const MUTATION_EVENTS = MUTATION_EVENTS_SUBJECT.pipe(share());
+
+/**
+ * Html Elements' Mutation Observer
+ */
+const MUTATION_OBSERVER = new MutationObserver(records => {
+  records.forEach(record => MUTATION_EVENTS_SUBJECT.next(record));
+});
+
+/**
+ * Cache observed elements and observables
+ */
+const OBSERVER_CACHE = new WeakMap<IResizableTarget, Observable<IResizeEvent>>();
 
 /**
  * Creates and registers resize observers for the target with factory given
@@ -54,11 +72,11 @@ function resizeEventProvider(target: IResizableTarget, factory: (target: IResiza
   let cache = OBSERVER_CACHE.get(target);
 
   if (!cache) {
-    cache = { count: 0, observable: factory(target) };
+    cache = factory(target);
+    OBSERVER_CACHE.set(target, cache);
   }
 
-  cache.count++;
-  return cache.observable;
+  return cache;
 }
 
 /**
@@ -67,9 +85,10 @@ function resizeEventProvider(target: IResizableTarget, factory: (target: IResiza
  */
 function windowResizeEventProvider(target: Window): Observable<IResizeEvent> {
   return resizeEventProvider(target, (target: Window) => {
-    return fromEvent(target, "resize")
-    .pipe(map(e => ({width: target.innerWidth, height: target.innerHeight})))
-    .pipe(share());
+    return fromEvent(target, "resize").pipe(
+      map(e => ({width: target.innerWidth, height: target.innerHeight})),
+      share()
+    );
   });
 }
 
@@ -80,10 +99,18 @@ function windowResizeEventProvider(target: Window): Observable<IResizeEvent> {
 function domElementResizeEventProvider(target: HTMLElement): Observable<IResizeEvent> {
   return resizeEventProvider(target, (target: HTMLElement) => {
     RESIZE_OBSERVER.observe(target);
-    return RESIZE_EVENTS
-      .pipe(filter(e => e.target === target))
-      .pipe(map(entry => ({width: entry.contentRect.width, height: entry.contentRect.height})))
-      .pipe(share());
+    MUTATION_OBSERVER.observe(target, {subtree: true});
+
+    return RESIZE_EVENTS.pipe(
+      filter(e => e.target === target),
+      map(entry => (<IResizeEvent>{width: entry.contentRect.width, height: entry.contentRect.height})),
+      merge(MUTATION_EVENTS.pipe(
+        filter(record => record.type !== "attributes"),
+        map(() => (<IResizeEvent>{width: target.offsetWidth, height: target.offsetHeight}))
+      )),
+      distinctUntilChanged(({width, height}, next) => width === next.width && height === next.height),
+      share()
+    );
   });
 }
 
