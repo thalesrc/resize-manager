@@ -1,4 +1,4 @@
-import { IResizableTarget, GTResizeObserver } from './resize-observer';
+import { IResizableTarget, GTResizeObserver } from "./resize-observer";
 
 export class ResizeManager {
   private _buffer = new Map<IResizableTarget, GTResizeObserver>();

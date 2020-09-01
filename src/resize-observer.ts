@@ -1,6 +1,6 @@
 import { Observable, fromEvent, Subject } from "rxjs";
 import { share, map, filter, throttleTime } from "rxjs/operators";
-import ResizeObserver from 'resize-observer-polyfill';
+import ResizeObserver from "resize-observer-polyfill";
 
 /**
  * Resizable Target Type (HTMLElement or Window)
@@ -69,7 +69,7 @@ function windowResizeEventProvider(target: Window): Observable<IResizeEvent> {
   return resizeEventProvider(target, (target: Window) => {
     return fromEvent(target, "resize")
     .pipe(map(e => ({width: target.innerWidth, height: target.innerHeight})))
-    .pipe(share())
+    .pipe(share());
   });
 }
 

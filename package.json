@@ -1,5 +1,5 @@
 {
-  "name": "@gen-tech/resize-manager",
+  "name": "@thalesrc/resize-manager",
   "version": "0.0.0",
   "description": "Improved Resize Events of Window & Dom Elements",
   "main": "dist/index.js",
@@ -7,7 +7,7 @@
   "scripts": {
     "prepare": "tsc",
     "document": "typedoc --out docs --excludeNotExported --excludePrivate --disableOutputCheck --gitRevision master",
-    "prepare-github-pages": "npm run document && echo \"\" > ./docs/.nojekyll"
+    "prepare:github-pages": "npm run document && echo \"\" > ./docs/.nojekyll"
   },
   "repository": {
     "type": "git",
