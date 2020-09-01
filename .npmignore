@@ -1,6 +1,8 @@
 node_modules/
 docs/
 src/
+dist/
+.github/
 .vscode/
 *.tgz
 package-lock.json
