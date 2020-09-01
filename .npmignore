@@ -1,6 +1,5 @@
 node_modules/
 docs/
-scripts/
 src/
 .vscode/
 *.tgz

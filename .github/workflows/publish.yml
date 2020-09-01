@@ -19,6 +19,12 @@ jobs:
       # - run: npm test
       - run: npm run version-update
       - run: npm run prepare
+      - run: npm run change-ts-version
+      - run: rm -rf node_modules
+      - run: rm ./package-lock.json
+      - run: npm install
+      - run: npm run prepare:legacy
+      - run: mv -v -f dist .
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
