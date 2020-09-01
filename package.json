@@ -38,9 +38,10 @@
   "homepage": "https://gen-tech.github.io/resize-manager",
   "devDependencies": {
     "@types/node": "^14.6.2",
+    "chalk": "^4.1.0",
+    "replace-json-property": "^1.4.3",
     "typedoc": "^0.19.0",
-    "typescript": "^4.0.2",
-    "replace-json-property": "^1.4.3"
+    "typescript": "^4.0.2"
   },
   "dependencies": {
     "resize-observer-polyfill": "^1.5.0",
