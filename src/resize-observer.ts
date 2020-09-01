@@ -99,7 +99,7 @@ function windowResizeEventProvider(target: Window): Observable<IResizeEvent> {
 function domElementResizeEventProvider(target: HTMLElement): Observable<IResizeEvent> {
   return resizeEventProvider(target, (target: HTMLElement) => {
     RESIZE_OBSERVER.observe(target);
-    MUTATION_OBSERVER.observe(target, {subtree: true, childList: true});
+    MUTATION_OBSERVER.observe(target, {attributes: true, characterData: true, subtree: true, childList: true});
 
     return RESIZE_EVENTS.pipe(
       filter(e => e.target === target),
