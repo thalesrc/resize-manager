@@ -24,7 +24,7 @@ jobs:
       - run: rm ./package-lock.json
       - run: npm install
       - run: npm run prepare:legacy
-      - run: mv -v -f dist .
+      - run: mv -v -f dist/* .
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
