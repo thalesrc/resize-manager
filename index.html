@@ -69,12 +69,40 @@
 				<p><a href="https://www.npmjs.com/package/@thalesrc/resize-manager"><img src="https://img.shields.io/npm/v/@thalesrc/resize-manager.svg" alt="npm"></a>
 					<a href="https://www.npmjs.com/package/@thalesrc/resize-manager"><img src="https://img.shields.io/npm/dw/@thalesrc/resize-manager.svg" alt="npm"></a>
 					<a href="https://github.com/thalesrc/resize-manager/blob/master/LICENSE"><img src="https://img.shields.io/npm/l/@thalesrc/resize-manager.svg" alt="npm"></a>
+					<img src="https://badgen.net/badge/built%20with/typescript/blue" alt="ts">
 				<a href="https://www.patreon.com/alisahin"><img src="https://img.shields.io/badge/patreon-alisahin-orange.svg" alt="patreon"></a></p>
 				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
 					<h4>Installation</h4>
 				</a>
 				<p><code>npm install @thalesrc/resize-manager --save</code></p>
 				<p>All Documentation =&gt; <a href="https://thalesrc.github.io/resize-manager">thalesrc.github.io/resize-manager</a></p>
+				<a href="#basic-usage" id="basic-usage" style="color: inherit; text-decoration: none;">
+					<h4>Basic Usage</h4>
+				</a>
+				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { ResizeObserver } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@thalesrc/resize-manager&#x27;</span>;
+
+<span class="hljs-keyword">const</span> element = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">&#x27;foo&#x27;</span>);
+
+<span class="hljs-keyword">const</span> observer = <span class="hljs-keyword">new</span> ResizeObserver(element);
+
+observer.resize.subscribe(<span class="hljs-function">(<span class="hljs-params">{width, height}</span>) =&gt;</span> {
+  <span class="hljs-built_in">console</span>.log(width, height);
+});</code></pre>
+				<p>or</p>
+				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { ResizeManager } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@thalesrc/resize-manager&#x27;</span>;
+
+<span class="hljs-keyword">const</span> element1 = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">&#x27;foo&#x27;</span>);
+<span class="hljs-keyword">const</span> element2 = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">&#x27;bar&#x27;</span>);
+
+<span class="hljs-keyword">const</span> manager = <span class="hljs-keyword">new</span> ResizeManager();
+
+manager.observe(element1).resize.subscribe(<span class="hljs-function">(<span class="hljs-params">{width, height}</span>) =&gt;</span> {
+  <span class="hljs-built_in">console</span>.log(width, height);
+});
+
+manager.observe(element2).resize.subscribe(<span class="hljs-function">(<span class="hljs-params">{width, height}</span>) =&gt;</span> {
+  <span class="hljs-built_in">console</span>.log(width, height);
+});</code></pre>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">

@@ -116,7 +116,7 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new GTResize<wbr>Observer<span class="tsd-signature-symbol">(</span>target<span class="tsd-signature-symbol">: </span><a href="../modules/_resize_observer_.html#iresizabletarget" class="tsd-signature-type">IResizableTarget</a>, throttleTime<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_resize_observer_.gtresizeobserver.html" class="tsd-signature-type">GTResizeObserver</a></li>
+						<li class="tsd-signature tsd-kind-icon">new GTResize<wbr>Observer<span class="tsd-signature-symbol">(</span>target<span class="tsd-signature-symbol">: </span><a href="../modules/_resize_observer_.html#resizabletarget" class="tsd-signature-type">ResizableTarget</a>, throttleTime<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_resize_observer_.gtresizeobserver.html" class="tsd-signature-type">GTResizeObserver</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
@@ -130,7 +130,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>target: <a href="../modules/_resize_observer_.html#iresizabletarget" class="tsd-signature-type">IResizableTarget</a></h5>
+									<h5>target: <a href="../modules/_resize_observer_.html#resizabletarget" class="tsd-signature-type">ResizableTarget</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
 											<p>Target to listen its resize events</p>
@@ -162,7 +162,7 @@
 					<a name="resize" class="tsd-anchor"></a>
 					<h3>resize</h3>
 					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> resize<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_resize_observer_.iresizeevent.html" class="tsd-signature-type">IResizeEvent</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> resize<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_resize_observer_.resizeevent.html" class="tsd-signature-type">ResizeEvent</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
@@ -178,7 +178,7 @@
 								<p>Fires on every resize event</p>
 								<p><em>By default, throttles events for every [90ms]{@link ScrollObserver#throttleTime}, use [throttleBy]{@link ScrollObserver#throttled} if need something else</em></p>
 							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_resize_observer_.iresizeevent.html" class="tsd-signature-type">IResizeEvent</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_resize_observer_.resizeevent.html" class="tsd-signature-type">ResizeEvent</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -189,7 +189,7 @@
 					<a name="throttleby" class="tsd-anchor"></a>
 					<h3>throttle<wbr>By</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">throttle<wbr>By<span class="tsd-signature-symbol">(</span>time<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_resize_observer_.iresizeevent.html" class="tsd-signature-type">IResizeEvent</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">throttle<wbr>By<span class="tsd-signature-symbol">(</span>time<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_resize_observer_.resizeevent.html" class="tsd-signature-type">ResizeEvent</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
@@ -213,7 +213,7 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_resize_observer_.iresizeevent.html" class="tsd-signature-type">IResizeEvent</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_resize_observer_.resizeevent.html" class="tsd-signature-type">ResizeEvent</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -257,10 +257,10 @@
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="../interfaces/_resize_observer_.iresizeevent.html" class="tsd-kind-icon">IResize<wbr>Event</a>
+						<a href="../interfaces/_resize_observer_.resizeevent.html" class="tsd-kind-icon">Resize<wbr>Event</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
-						<a href="../modules/_resize_observer_.html#iresizabletarget" class="tsd-kind-icon">IResizable<wbr>Target</a>
+						<a href="../modules/_resize_observer_.html#resizabletarget" class="tsd-kind-icon">Resizable<wbr>Target</a>
 					</li>
 				</ul>
 			</nav>
