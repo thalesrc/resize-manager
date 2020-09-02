@@ -1,14 +1,14 @@
-import { IResizableTarget, GTResizeObserver } from "./resize-observer";
+import { ResizableTarget, GTResizeObserver } from "./resize-observer";
 
 export class ResizeManager {
-  private _buffer = new Map<IResizableTarget, GTResizeObserver>();
+  private _buffer = new Map<ResizableTarget, GTResizeObserver>();
 
   constructor(
     private observerThrottleTime?: number
   ) {
   }
 
-  public observe(target: IResizableTarget): GTResizeObserver {
+  public observe(target: ResizableTarget): GTResizeObserver {
     if (!this._buffer.has(target)) {
       this._buffer.set(target, new GTResizeObserver(target, this.observerThrottleTime));
     }

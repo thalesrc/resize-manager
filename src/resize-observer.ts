@@ -5,12 +5,12 @@ import ResizeObserver from "resize-observer-polyfill";
 /**
  * Resizable Target Type (HTMLElement or Window)
  */
-export type IResizableTarget = HTMLElement | Window;
+export type ResizableTarget = HTMLElement | Window;
 
 /**
  * Resize Event
  */
-export interface IResizeEvent {
+export interface ResizeEvent {
   /**
    * width of the target in pixels
    */
@@ -61,14 +61,14 @@ const MUTATION_OBSERVER = new MutationObserver(records => {
 /**
  * Cache observed elements and observables
  */
-const OBSERVER_CACHE = new WeakMap<IResizableTarget, Observable<IResizeEvent>>();
+const OBSERVER_CACHE = new WeakMap<ResizableTarget, Observable<ResizeEvent>>();
 
 /**
  * Creates and registers resize observers for the target with factory given
  * @param target Target to provide resize events
  * @param factory Resize Event Observable Factory
  */
-function resizeEventProvider(target: IResizableTarget, factory: (target: IResizableTarget) => Observable<IResizeEvent>): Observable<IResizeEvent> {
+function resizeEventProvider(target: ResizableTarget, factory: (target: ResizableTarget) => Observable<ResizeEvent>): Observable<ResizeEvent> {
   let cache = OBSERVER_CACHE.get(target);
 
   if (!cache) {
@@ -83,7 +83,7 @@ function resizeEventProvider(target: IResizableTarget, factory: (target: IResiza
  * Creates and registers resize observer for a window instance
  * @param target Target Window Object
  */
-function windowResizeEventProvider(target: Window): Observable<IResizeEvent> {
+function windowResizeEventProvider(target: Window): Observable<ResizeEvent> {
   return resizeEventProvider(target, (target: Window) => {
     return fromEvent(target, "resize").pipe(
       map(e => ({width: target.innerWidth, height: target.innerHeight})),
@@ -96,17 +96,17 @@ function windowResizeEventProvider(target: Window): Observable<IResizeEvent> {
  * Creates and registers resize observer for an HTMLElement instance
  * @param target Target Window Object
  */
-function domElementResizeEventProvider(target: HTMLElement): Observable<IResizeEvent> {
+function domElementResizeEventProvider(target: HTMLElement): Observable<ResizeEvent> {
   return resizeEventProvider(target, (target: HTMLElement) => {
     RESIZE_OBSERVER.observe(target);
     MUTATION_OBSERVER.observe(target, {attributes: true, characterData: true, subtree: true, childList: true});
 
     return RESIZE_EVENTS.pipe(
       filter(e => e.target === target),
-      map(entry => (<IResizeEvent>{width: entry.contentRect.width, height: entry.contentRect.height})),
+      map(entry => (<ResizeEvent>{width: entry.contentRect.width, height: entry.contentRect.height})),
       merge(MUTATION_EVENTS.pipe(
         filter(record => record.type !== "attributes"),
-        map(() => (<IResizeEvent>{width: target.offsetWidth, height: target.offsetHeight}))
+        map(() => (<ResizeEvent>{width: target.offsetWidth, height: target.offsetHeight}))
       )),
       distinctUntilChanged(({width, height}, next) => width === next.width && height === next.height),
       share()
@@ -124,12 +124,12 @@ export class GTResizeObserver {
    * All the other events are derived from this
    * Fires the width & height in pixels
    */
-  private _provider: Observable<IResizeEvent>;
+  private _provider: Observable<ResizeEvent>;
 
   /**
    * The buffer for the observables which are throttled by the same time
    */
-  private _buffer: {[key: number]: Observable<IResizeEvent>} = {};
+  private _buffer: {[key: number]: Observable<ResizeEvent>} = {};
 
   /**
    * @param target Target to listen its resize events
@@ -139,7 +139,7 @@ export class GTResizeObserver {
    * > Use in caution!
    */
   constructor(
-    private target: IResizableTarget,
+    private target: ResizableTarget,
     private throttleTime = 90
   ) {
     this._provider = target instanceof Window
@@ -154,7 +154,7 @@ export class GTResizeObserver {
    *
    * _By default, throttles events for every [90ms]{@link ScrollObserver#throttleTime}, use [throttleBy]{@link ScrollObserver#throttled} if need something else_
    */
-  get resize(): Observable<IResizeEvent> {
+  get resize(): Observable<ResizeEvent> {
     return this.throttleBy(this.throttleTime);
   }
 
@@ -165,7 +165,7 @@ export class GTResizeObserver {
    *
    * @param time Time to throttle events
    */
-  public throttleBy(time: number): Observable<IResizeEvent> {
+  public throttleBy(time: number): Observable<ResizeEvent> {
     if (time <= 0) {
       return this._provider;
     }
