@@ -99,6 +99,8 @@
 							<h3>Accessors</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_resize_observer_.gtresizeobserver.html#resize" class="tsd-kind-icon">resize</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_resize_observer_.gtresizeobserver.html#resizeend" class="tsd-kind-icon">resize<wbr>End</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_resize_observer_.gtresizeobserver.html#resizestart" class="tsd-kind-icon">resize<wbr>Start</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -122,7 +124,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/thalesrc/resize-manager/blob/master/src/resize-observer.ts#L132">resize-observer.ts:132</a></li>
+									<li>Defined in <a href="https://github.com/thalesrc/resize-manager/blob/master/src/resize-observer.ts#L136">resize-observer.ts:136</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -168,7 +170,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/thalesrc/resize-manager/blob/master/src/resize-observer.ts#L157">resize-observer.ts:157</a></li>
+									<li>Defined in <a href="https://github.com/thalesrc/resize-manager/blob/master/src/resize-observer.ts#L161">resize-observer.ts:161</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -177,6 +179,50 @@
 								</div>
 								<p>Fires on every resize event</p>
 								<p><em>By default, throttles events for every [90ms]{@link ScrollObserver#throttleTime}, use [throttleBy]{@link ScrollObserver#throttled} if need something else</em></p>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_resize_observer_.resizeevent.html" class="tsd-signature-type">ResizeEvent</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="resizeend" class="tsd-anchor"></a>
+					<h3>resize<wbr>End</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> resizeEnd<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_resize_observer_.resizeevent.html" class="tsd-signature-type">ResizeEvent</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/thalesrc/resize-manager/blob/master/src/resize-observer.ts#L179">resize-observer.ts:179</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Emits only when resizing ends</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_resize_observer_.resizeevent.html" class="tsd-signature-type">ResizeEvent</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="resizestart" class="tsd-anchor"></a>
+					<h3>resize<wbr>Start</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> resizeStart<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_resize_observer_.resizeevent.html" class="tsd-signature-type">ResizeEvent</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/thalesrc/resize-manager/blob/master/src/resize-observer.ts#L168">resize-observer.ts:168</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Emits only when resizing starts</p>
+								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_resize_observer_.resizeevent.html" class="tsd-signature-type">ResizeEvent</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
@@ -195,7 +241,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/thalesrc/resize-manager/blob/master/src/resize-observer.ts#L168">resize-observer.ts:168</a></li>
+									<li>Defined in <a href="https://github.com/thalesrc/resize-manager/blob/master/src/resize-observer.ts#L190">resize-observer.ts:190</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -248,6 +294,12 @@
 							</li>
 							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
 								<a href="_resize_observer_.gtresizeobserver.html#resize" class="tsd-kind-icon">resize</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="_resize_observer_.gtresizeobserver.html#resizeend" class="tsd-kind-icon">resize<wbr>End</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="_resize_observer_.gtresizeobserver.html#resizestart" class="tsd-kind-icon">resize<wbr>Start</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_resize_observer_.gtresizeobserver.html#throttleby" class="tsd-kind-icon">throttle<wbr>By</a>
