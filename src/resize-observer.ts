@@ -1,6 +1,6 @@
 import { Observable, fromEvent, Subject } from "rxjs";
 import { share, map, filter, throttleTime, merge, distinctUntilChanged, debounceTime, mapTo } from "rxjs/operators";
-import { isFalsy, isTruthy } from "@thalesrc/js-utils";
+import { isTruthy } from "@thalesrc/js-utils";
 
 /**
  * Resizable Target Type (HTMLElement or Window)
@@ -169,7 +169,7 @@ export class GTResizeObserver {
     return this._provider.pipe(
       merge(this.resizeEnd.pipe(mapTo(false))),
       distinctUntilChanged(bothTruthy),
-      filter(isFalsy)
+      filter(isTruthy)
     )
   }
 
