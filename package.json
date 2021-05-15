@@ -45,7 +45,6 @@
   },
   "dependencies": {
     "@thalesrc/js-utils": "^2.9.3",
-    "resize-observer-polyfill": "^1.5.0",
     "rxjs": "^6.4.0"
   }
 }

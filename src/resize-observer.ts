@@ -1,6 +1,5 @@
 import { Observable, fromEvent, Subject } from "rxjs";
 import { share, map, filter, throttleTime, merge, distinctUntilChanged, debounceTime, mapTo } from "rxjs/operators";
-import ResizeObserver from "resize-observer-polyfill";
 import { isFalsy, isTruthy } from "@thalesrc/js-utils";
 
 /**
