@@ -1,6 +1,7 @@
 import { Observable, fromEvent, Subject } from "rxjs";
-import { share, map, filter, throttleTime, merge, distinctUntilChanged } from "rxjs/operators";
+import { share, map, filter, throttleTime, merge, distinctUntilChanged, debounceTime, mapTo } from "rxjs/operators";
 import ResizeObserver from "resize-observer-polyfill";
+import { isFalsy, isTruthy } from "@thalesrc/js-utils";
 
 /**
  * Resizable Target Type (HTMLElement or Window)
@@ -114,6 +115,10 @@ function domElementResizeEventProvider(target: HTMLElement): Observable<ResizeEv
   });
 }
 
+function bothTruthy(val1: any, val2: any): boolean {
+  return isTruthy(val1) && isTruthy(val2);
+}
+
 /**
  * #### Resize Observer
  * Provides improved resize observables
@@ -156,6 +161,24 @@ export class GTResizeObserver {
    */
   get resize(): Observable<ResizeEvent> {
     return this.throttleBy(this.throttleTime);
+  }
+
+  /**
+   * Emits only when resizing starts
+   */
+  get resizeStart(): Observable<ResizeEvent> {
+    return this._provider.pipe(
+      merge(this.resizeEnd.pipe(mapTo(false))),
+      distinctUntilChanged(bothTruthy),
+      filter(isFalsy)
+    )
+  }
+
+  /**
+   * Emits only when resizing ends
+   */
+  get resizeEnd(): Observable<ResizeEvent> {
+    return this._provider.pipe(debounceTime(this.throttleTime));
   }
 
   /**

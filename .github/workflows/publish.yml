@@ -18,12 +18,12 @@ jobs:
       - run: npm install
       # - run: npm test
       - run: npm run version-update
-      - run: npm run prepare
+      - run: npm run build
       - run: npm run change-ts-version
       - run: rm -rf node_modules
       - run: rm ./package-lock.json
       - run: npm install
-      - run: npm run prepare:legacy
+      - run: npm run build:legacy
       - run: mv -v -f dist/* .
       - run: rm -rf dist
       - run: npm publish

@@ -20,7 +20,7 @@ jobs:
       #   with:
       #     token: ${{ secrets.CODECOV_TOKEN }}
       #     file: ./coverage/coverage-final.json
-      - run: npm run prepare:github-pages
+      - run: npm run build:github-pages
       - name: Publish Github Pages
         uses: peaceiris/actions-gh-pages@v3
         with:

@@ -8,10 +8,10 @@
     "access": "public"
   },
   "scripts": {
-    "prepare": "tsc",
+    "build": "tsc",
     "document": "typedoc --out docs --excludeNotExported --excludePrivate --disableOutputCheck --gitRevision master",
-    "prepare:github-pages": "npm run document && echo \"\" > ./docs/.nojekyll",
-    "prepare:legacy": "tsc -p ./tsconfig.legacy.json",
+    "build:github-pages": "npm run document && echo \"\" > ./docs/.nojekyll",
+    "build:legacy": "tsc -p ./tsconfig.legacy.json",
     "version-update": "npm version $PACKAGE_VERSION --no-git-tag-version",
     "change-ts-version": "rjp ./package.json typescript ~3.4.5"
   },
@@ -44,6 +44,7 @@
     "typescript": "^4.0.2"
   },
   "dependencies": {
+    "@thalesrc/js-utils": "^2.9.3",
     "resize-observer-polyfill": "^1.5.0",
     "rxjs": "^6.4.0"
   }
