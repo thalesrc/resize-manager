@@ -118,7 +118,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> observerThrottleTime: <span class="tsd-signature-type">number</span></h5>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> observerThrottleTime: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 90</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_resize_manager_.resizemanager.html" class="tsd-signature-type">ResizeManager</a></h4>
@@ -152,7 +152,7 @@
 					<a name="observe" class="tsd-anchor"></a>
 					<h3>observe</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">observe<span class="tsd-signature-symbol">(</span>target<span class="tsd-signature-symbol">: </span><a href="../modules/_resize_observer_.html#resizabletarget" class="tsd-signature-type">ResizableTarget</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_resize_observer_.gtresizeobserver.html" class="tsd-signature-type">GTResizeObserver</a></li>
+						<li class="tsd-signature tsd-kind-icon">observe<span class="tsd-signature-symbol">(</span>target<span class="tsd-signature-symbol">: </span><a href="../modules/_resize_observer_.html#resizabletarget" class="tsd-signature-type">ResizableTarget</a>, throttleTime<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_resize_observer_.gtresizeobserver.html" class="tsd-signature-type">GTResizeObserver</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
@@ -165,6 +165,9 @@
 							<ul class="tsd-parameters">
 								<li>
 									<h5>target: <a href="../modules/_resize_observer_.html#resizabletarget" class="tsd-signature-type">ResizableTarget</a></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> throttleTime: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = this.observerThrottleTime</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_resize_observer_.gtresizeobserver.html" class="tsd-signature-type">GTResizeObserver</a></h4>
