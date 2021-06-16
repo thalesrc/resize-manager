@@ -4,13 +4,13 @@ export class ResizeManager {
   private _buffer = new Map<ResizableTarget, GTResizeObserver>();
 
   constructor(
-    private observerThrottleTime?: number
+    private observerThrottleTime: number = 90
   ) {
   }
 
-  public observe(target: ResizableTarget): GTResizeObserver {
+  public observe(target: ResizableTarget, throttleTime = this.observerThrottleTime): GTResizeObserver {
     if (!this._buffer.has(target)) {
-      this._buffer.set(target, new GTResizeObserver(target, this.observerThrottleTime));
+      this._buffer.set(target, new GTResizeObserver(target, throttleTime));
     }
 
     return this._buffer.get(target);
